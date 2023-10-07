@@ -1,0 +1,59 @@
+{%extends 'gestionAdmin.html'%}
+{% load static %}
+{%block title%}Gestion Inventario{%endblock%}
+
+
+
+{%block navbar%}
+<li class="nav-item">
+    <a class="nav-link " aria-current="page" href="/">Home</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link active" href="/inventario">Inventario</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="#">Venta</a>
+</li>
+<li class="nav-item">
+    <a class="nav-link">Reportes</a>
+</li>
+{%endblock%}
+{%block body%}
+<div class="row">
+    <div class="col-4"><div class="accordion accordion-flush" id="accordionFlushExample">
+        <h2 class="text-center">Menu</h2>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Categorias
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"><a href="{%url 'categorias'%}">Categorias</a></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              Proveedores
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"><a href="{%url 'proveedores'%}">Proveedores</a></div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              Productos
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">><a href="{%url 'productos'%}">Productos</a></div>
+          </div>
+        </div>
+      </div></div>
+</div>
+
+
+{%endblock%}

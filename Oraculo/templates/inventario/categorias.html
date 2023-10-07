@@ -1,0 +1,50 @@
+{%extends 'inventario/inventario.html'%}
+{% load static %}
+{%block title%}Gestion Inventario{%endblock%}
+
+
+{%block body%}
+<div class="row">
+    <div class="col-4">
+        <h2>Registro Categorias</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="{%url 'registroCategoria'%}" method="POST">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <input type="text" id="textNombre" name="textNombre" class="form-control" placeholder="Nombre"
+                            required>
+                    </div>
+                    <div class="form-group"><button type="submit"
+                            class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <h1>Tabla de Categorias</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for c in Category%}
+                    <tr>
+                        <td>{{c.id}}</td>
+                        <td>{{c.name}}</td>
+                        <td><a href="{%url 'editarCategoria' c.id%}" class="btn btn-warning">Editar</a></td>
+                        <td><a href="{%url 'eliminarCategoria' c.id%}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}
