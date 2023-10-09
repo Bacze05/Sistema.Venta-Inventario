@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from inventario import views as inventario
+from venta import views as venta
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,6 +26,9 @@ urlpatterns = [
     path('categorias/',inventario.categorias, name='categorias'),
     path('proveedores/',inventario.proveedores,name='proveedores'),
     path('productos/',inventario.productos,name='productos'),
+    path('venta/',venta.venta,name='venta'),
+    path('Catalogo/',venta.buscadorProducto,name='catalogo'),
+    path('caja/',venta.caja,name='caja'),
 
 
     # Links para Categorias
@@ -38,8 +42,13 @@ urlpatterns = [
     path('edicionSuppliers/',inventario.edicionProveedores, name='edicionProveedores'),
     path('eliminarSuppliers/<id>',inventario.eliminarProveedores, name='eliminarProveedor'),
     # Links para Productos
-    path('registrarProducto/',inventario.registroProductos, name='registroProducto'),
+    path('registroProducto/',inventario.registroProductos, name='registroProducto'),
 
+    # Links para Venta
+    # path('productoVenta/',venta.btnVender, name='btnVender'),
+    # path('enlistado/',venta.agregar_producto, name='agregarProducto'),
+    path('venta/agregar_producto/', venta.agregar_producto, name="agregar_producto"),
+    path('venta/reducir_stock/', venta.reducir_stock, name='reducir_stock'),
 
 ]
 

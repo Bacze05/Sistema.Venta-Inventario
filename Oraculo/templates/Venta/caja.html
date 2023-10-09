@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .mt-navbar {
+            margin-top: 56px;
+            /* Ajusta el valor según sea necesario para mantener el espacio entre el navbar y el contenido */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary sticky-top fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Venta</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav nav-underline">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{%url 'venta'%}">Venta</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{%url 'productos'%}">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{%url 'caja'%}">Caja</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}">
+                            <button class="btn btn-danger" type="button">Cerrar sesión</button>
+                        </a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-3 ">
+        <div class="accordion" id="cajaAccordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0 text-center">
+                        <button class="btn" type=" button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Opciones de Caja
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#cajaAccordion">
+                    <div class="card-body">
+                        <!-- Contenido para mostrar opciones de caja -->
+                        <button class="btn btn-success" onclick="realizarAccionCaja()">Abrir/Cerrar Caja</button>
+                        <button class="btn btn-primary" onclick="cuadrarCaja()">Cuadrar Caja</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function realizarAccionCaja() {
+            var estadoCaja = obtenerEstadoCaja(); // Función para obtener el estado actual de la caja (abierta o cerrada)
+
+            if (estadoCaja === "cerrada") {
+                abrirCaja();
+            } else if (estadoCaja === "abierta") {
+                cerrarCaja();
+            }
+        }
+
+        function obtenerEstadoCaja() {
+            // Código para obtener el estado actual de la caja (abierta o cerrada)
+            // Puedes utilizar una variable o una función para obtener esta información
+            // Por ejemplo, puedes tener una variable estadoCaja que contenga "abierta" o "cerrada"
+            // y devolver el valor de esa variable aquí
+            // En este ejemplo, se devuelve "abierta" para mostrar el funcionamiento
+            return "abierta";
+        }
+
+        function abrirCaja() {
+            // Código para realizar la apertura de la caja
+            // Aquí puedes agregar las acciones necesarias para abrir la caja
+            alert("Caja abierta");
+        }
+
+        function cerrarCaja() {
+            // Código para realizar el cierre de la caja
+            // Aquí puedes agregar las acciones necesarias para cerrar la caja
+            alert("Caja cerrada");
+        }
+
+        function cuadrarCaja() {
+            // Código para realizar el cuadre de la caja
+            // Aquí puedes agregar las acciones necesarias para cuadrar la caja
+            alert("Caja cuadrada");
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
